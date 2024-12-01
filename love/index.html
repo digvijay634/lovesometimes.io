@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forever Love</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f7a7c1, #ff5f6d); /* Soft and romantic gradient */
+            height: 100vh;
+            text-align: center;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 4rem;
+            margin-top: 20px;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .shayari {
+            font-size: 1.6rem;
+            color: #ffeb3b; /* Light Yellow */
+            font-style: italic;
+            margin-top: 20px;
+            animation: fadeIn 4s ease-out;
+            margin-bottom: 30px;
+            line-height: 1.5;
+            transition: all 0.5s ease-in-out;
+        }
+
+        button {
+            background: #ff4081;
+            color: white;
+            padding: 18px 60px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background: #f50057;
+            transform: scale(1.1);
+        }
+
+        .audio-video-container {
+            margin-top: 50px;
+            animation: fadeIn 4s ease-out;
+        }
+
+        video, audio {
+            max-width: 100%;
+            width: 500px;
+            margin: 20px auto;
+            border-radius: 15px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .falling-heart {
+            position: absolute;
+            top: -50px;
+            width: 30px;
+            height: 30px;
+            animation: heartFall 5s infinite ease-in;
+            pointer-events: none;
+        }
+
+        @keyframes heartFall {
+            0% { opacity: 1; transform: translateY(-50px) rotate(0deg); }
+            50% { opacity: 0.6; transform: translateY(250px) rotate(180deg); }
+            100% { opacity: 0; transform: translateY(500px) rotate(360deg); }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            .shayari {
+                font-size: 1.4rem;
+            }
+            button {
+                padding: 16px 45px;
+                font-size: 1.1rem;
+            }
+            video, audio {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            .shayari {
+                font-size: 1.2rem;
+            }
+            button {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+            video, audio {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Title Section -->
+    <h1>Forever Love ❤️</h1>
+
+    <!-- Shayari Section -->
+    <div class="shayari" id="shayariDisplay">
+        "Teri har baat mein kuch khaas baat hai,  
+        Jab tu paas hoti hai toh duniya se be-khabar ho jaata hoon main."
+    </div>
+
+    <!-- Button to Change Shayari -->
+    <button onclick="displayShayari()">Another Shayari</button>
+
+    <!-- Falling Heart Animation -->
+    <script>
+        function createFallingHeart() {
+            const img = document.createElement("img");
+            img.src = "heart.png";  // Replace with your own heart image
+            img.className = "falling-heart";
+            img.style.left = Math.random() * window.innerWidth + "px";
+            document.body.appendChild(img);
+
+            setTimeout(() => img.remove(), 5000);
+        }
+
+        setInterval(createFallingHeart, 500); // Create falling hearts every 500ms
+    </script>
+
+    <!-- Audio and Video Section -->
+    <div class="audio-video-container">
+        <video controls>
+            <source src="your-video-file.mp4" type="video/mp4">
+            Your browser does not support the video element.
+        </video>
+
+        <audio controls>
+            <source src="your-audio-file.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <!-- Shayari Array & Function -->
+    <script>
+        const shayaries = [
+            "Teri har baat mein kuch khaas baat hai, Jab tu paas hoti hai toh duniya se be-khabar ho jaata hoon main.",
+            "Meri zindagi ki har ek khushi tumse hi toh hai!",
+            "Dil mein bas tum ho, tum se pyaar kiya maine!",
+            "Tere bina jee na paaye, bas tu ho saath mera!",
+            "Zindagi ki raahon mein teri talash hai, Tu ho sabse khaas mere liye!",
+            "Meri khushiyan, meri muskurahat, bas tumse hi toh hai!",
+            "Jab tu paas hoti hai, toh har ghadi sukoon hoti hai!",
+            "Har subah meri tumse milne ki dua karte hain, Tumse pyaar karte hain hum apni zindagi se bhi zyada!",
+            "Meri duniya bas tum ho, aur tum ho toh sab kuch hai!",
+            "Teri har ek muskaan se mera dil chaand ho jaata hai, Tumhare saath ho toh zindagi roshan ho jaati hai!"
+        ];
+
+        function displayShayari() {
+            const randomIndex = Math.floor(Math.random() * shayaries.length);
+            document.getElementById("shayariDisplay").textContent = shayaries[randomIndex];
+        }
+    </script>
+
+</body>
+</html>
